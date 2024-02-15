@@ -1,0 +1,25 @@
+.form-control{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.form-control label{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.form-control input{
+    width: 80%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #8b005d;
+}
+.form-control.invalid label{
+    color: red;
+
+}
+.form-control.invalid input{
+ border-color: red;
+ background-color: #e88a8a;
+}

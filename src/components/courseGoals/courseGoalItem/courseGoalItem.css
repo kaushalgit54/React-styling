@@ -1,0 +1,9 @@
+.goal-item{
+    list-style: none;
+    background-color: #8b005d;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    color: white;
+    width: 98%;
+}

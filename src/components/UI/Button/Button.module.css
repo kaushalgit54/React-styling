@@ -1,0 +1,13 @@
+.button{
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #ac0e77;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+@media (max-width: 420px){
+    .button{ width:75%;
+        height: 30px;}
+}

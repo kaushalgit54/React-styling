@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
-
+import CourseGoalsList from './components/courseGoals/courseGoalsList/courseGoalsList';
+import CourseInput from './components/courseGoals/courseInput/courseInput';
 function App() {
+
+   const [courseGoals, setCourseGoals] = useState([
+    {text: 'Do all exercises', id: 'g1'},
+    {text: 'Finish the course', id: 'g2'}
+   ]);
+
+   let content = (<p style={{textAlign:'center'}}>No goals found. Maybe add one!</p>);
+   const addGoalHandler = (enteredText)=>{
+     setCourseGoals(prevGoals =>{
+       const updateGoals = [...prevGoals];
+       updateGoals.unshift({text: enteredText, id : Math.random().toString()});
+       return updateGoals;
+     });
+   }
+   const deletItemHandler = (goalId)=>{
+      setCourseGoals(prevGoals =>{
+        const updatedGoals = prevGoals.filter(goal => goal.id !==  goalId);
+        return updatedGoals;
+      });
+   }
+
+   if(courseGoals.length > 0){
+    content = (
+      <CourseGoalsList items={courseGoals} onDeleteItem = {deletItemHandler} />
+    );
+   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <div className="goal-form">
+         <CourseInput onAddGoal = {addGoalHandler}/>
+       </div>
+       <div className="goals">
+         {content}
+       </div>     
     </div>
   );
 }
